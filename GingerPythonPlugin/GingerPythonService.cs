@@ -10,6 +10,16 @@ namespace GingerPythonPlugin
         [GingerAction("RunPython", "Run Python Command")]
         public void RunPython(IGingerAction GA, string PythonFile)
         {
+
+            string retOutput;
+
+        }
+
+
+        [GingerAction("RunPython", "Run Python Command")]
+        public void RunPythonScript(IGingerAction GA, string script)
+        {
+
             string retOutput;
 
         }
