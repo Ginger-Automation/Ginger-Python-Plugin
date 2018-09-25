@@ -14,7 +14,9 @@ namespace GingerPythonPluginConsole
             GingerPythonService service = new GingerPythonService();
             GingerAction GA = new GingerAction();
 
+            // Run python file
             service.RunPython(GA, "c:\\Ronen\\Robot\\red\\workspace\\ginger-robot\\test\\hello.py");
+            // Run python script
      //    service.RunPythonScript(GA, "print('hello from python script')");
 
 
