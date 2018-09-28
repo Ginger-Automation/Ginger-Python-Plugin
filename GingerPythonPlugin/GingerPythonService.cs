@@ -39,7 +39,7 @@ namespace GingerPythonPlugin
                 object result = source.Execute(scope);
                 // GA.AddOutput(string param, object value, string path = null);
 
-           //     engine.Runtime.Globals.SetVariable("property_value", "TB Test");
+           //    engine.Runtime.Globals.SetVariable("property_value", "TB Test");
            //     scope.SetVariable("name","value");
 
 
