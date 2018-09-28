@@ -3,6 +3,7 @@ using GingerPythonPlugin;
 using Amdocs.Ginger.Plugin.Core;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace GingerPythonPluginTest
 {
@@ -14,17 +15,21 @@ namespace GingerPythonPluginTest
         {
             GingerPythonService service = new GingerPythonService();
             GingerAction GA = new GingerAction();
+            String BasePath = "c:/Ronen/development/python/GingerPythonPlugin/";
+            List<String> LibList = new List<String>();
+            LibList.Add("c:/Python27/Lib/");
 
             Console.WriteLine("start TestGingerPythonPlugin_RunPythonFile");
 
-            String fileName = "c:\\Ronen\\Robot\\red\\workspace\\ginger-robot\\test\\openFile.py";
-            service.RunPython(GA, fileName);
-            StreamReader sr = new StreamReader(fileName);
+            String fileName = BasePath + "openFile.py";
+            service.RunPython(GA, fileName, LibList);
+
+            String testFile = BasePath + "testfile.txt";
+            StreamReader sr = new StreamReader(testFile);
 
             //Assert
             Assert.IsNotNull( sr, "No Errors");
-            Assert.IsNull(sr, "Python file was not executed successfully");
-
+  
 
         }
 
@@ -34,8 +39,9 @@ namespace GingerPythonPluginTest
         {
             GingerPythonService service = new GingerPythonService();
             GingerAction GA = new GingerAction();
-            String fileName = "c:\\Ronen\\Robot\\red\\workspace\\ginger-robot\\test\\openFile.py";
             Console.WriteLine("start TestGingerPythonPlugin_RunPythonFile");
+            List<String> LibList = new List<String>();
+            LibList.Add("c:/Python27/Lib/");
 
             String script =
                     "#!/usr/bin/python" +
@@ -48,13 +54,15 @@ namespace GingerPythonPluginTest
                     "  f.write('Now the file has one more line!')" +
                     "createFile();";
             
-            service.RunPythonScript(GA, script);
-            StreamReader sr = new StreamReader(fileName);
+            service.RunPythonScript(GA, script, LibList);
+
+
+            String testFile = "c:\\Ronen\\development\\python\\GingerPythonPlugin\\testfile.txt";
+            StreamReader sr = new StreamReader(testFile);
 
             //Assert
             Assert.IsNotNull(sr, "No Errors");
-            Assert.IsNull(sr, "Python script was not executed successfully");
-
+ 
 
         }
     }

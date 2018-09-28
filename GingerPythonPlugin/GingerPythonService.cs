@@ -9,10 +9,7 @@ using IronPython.Runtime;
 using IronPython;
 using Microsoft.Scripting.Hosting;
 using Microsoft.Scripting;
-
-
-
-
+using System.Collections.Generic;
 
 namespace GingerPythonPlugin
 {
@@ -20,24 +17,30 @@ namespace GingerPythonPlugin
     public class GingerPythonService : IGingerService, IStandAloneAction
     {
 
-        [GingerAction("RunPython", "Run Python file")]
-        public ScriptScope RunPython(IGingerAction GA, string PythonFile)
+        [GingerAction("RunPython", "Run Python file" )]
+        public ScriptScope RunPython(IGingerAction GA, string PythonFile, List<String> LibList)
         {
             Console.WriteLine("start RunPython");
             ScriptScope scope = null;
             if (PythonFile != null)
             {
-                var pythonEngine = Python.CreateEngine();
-                scope = pythonEngine.CreateScope();
+                var engine = Python.CreateEngine();
+                if (LibList != null && LibList.Count > 0)
+                {
+                    var searchPaths = engine.GetSearchPaths();
+                    foreach (String lib in LibList)
+                        searchPaths.Add(@lib);
+                    engine.SetSearchPaths(searchPaths);
+                }
+                scope = engine.CreateScope();
 
                 Console.WriteLine("Run filename- " + PythonFile);
-                ScriptSource source = pythonEngine.CreateScriptSourceFromFile(PythonFile);
+                ScriptSource source = engine.CreateScriptSourceFromFile(PythonFile);
                 object result = source.Execute(scope);
-                // need to get the prints from the python script
                 // GA.AddOutput(string param, object value, string path = null);
 
-         //       pythonEngine.Runtime.Globals.SetVariable("property_value", "TB Test");
-         //       scope.SetVariable("name","value");
+           //     engine.Runtime.Globals.SetVariable("property_value", "TB Test");
+           //     scope.SetVariable("name","value");
 
 
             }
@@ -52,57 +55,25 @@ namespace GingerPythonPlugin
 
 
         [GingerAction("RunPython", "Run Python script")]
-        public ScriptScope RunPythonScript(IGingerAction GA, string script)
+        public ScriptScope RunPythonScript(IGingerAction GA, string script, List<String> LibList)
         {
             ScriptScope scope = null;
             Console.WriteLine("Start RunPythonScript");
 
-            var pythonEngine = Python.CreateEngine();
-            ScriptSource source = pythonEngine.CreateScriptSourceFromString(script);
+            var engine = Python.CreateEngine();
+            if (LibList != null && LibList.Count > 0)
+            {
+                var searchPaths = engine.GetSearchPaths();
+                foreach (String lib in LibList)
+                    searchPaths.Add(@lib);
+                engine.SetSearchPaths(searchPaths);
+            }
+            ScriptSource source = engine.CreateScriptSourceFromString(script);
             source.Execute();
 
             Console.WriteLine("End RunPythonScript");
             return scope;
         }
-
-
-/*
-        [GingerAction("TestScope", "Run Python script")]
-        public ScriptScope TestScope(IGingerAction GA, string script)
-        {
-            try
-            {
-                var engine = Python.CreateEngine();
-                var scope = engine.CreateScope();
-                scope.SetVariable("A", 42);
-                engine.Execute("print Sum; bar=A+11", scope);
-                Console.WriteLine(scope.GetVariable("bar"));
-            }
-            catch(Exception e
-            {
-                e.send
-            }
-        }
-
-
-        [GingerAction("setVariable", "Set variable value")]
-               public ScriptScope SetVariable(IGingerAction GA, ScriptScope scope, String variableName, object variableValue)
-               {
-                   Console.WriteLine("Start SetVariable");
-                   if (scope != null)
-                   {
-                       scope.SetVariable(variableName, variableValue);
-                   }
-                   Console.WriteLine("End SetVariable");
-                   return scope;
-               }
-          
-
-    */
-
-
-
-
 
 
     }
