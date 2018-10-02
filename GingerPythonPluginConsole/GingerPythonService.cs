@@ -13,11 +13,11 @@ using System.Collections.Generic;
 
 namespace GingerPythonPlugin
 {
-    [GingerService("SHELL", "Shell Server")]
+    [GingerService("Python", "Run Python")]
     public class GingerPythonService : IGingerService, IStandAloneAction
     {
 
-        [GingerAction("RunPython", "Run Python file" )]
+        [GingerAction("RunPythonFile", "Run Python file" )]
         public ScriptScope RunPython(IGingerAction GA, string PythonFile, List<String> LibList)
         {
             Console.WriteLine("start RunPython");
@@ -75,6 +75,30 @@ namespace GingerPythonPlugin
             return scope;
         }
 
+        [GingerAction("RunPythonScript", "Run Python script")]
+        public void RunScript2(IGingerAction GA, string script, string[] vars)  // replace with List
+        {
+            Console.WriteLine("start RunPythonScript");
+            
+            var engine = Python.CreateEngine();
+            ScriptScope scope = engine.CreateScope();
+
+            // scope.SetVariable("A", 4);
+            // scope.SetVariable("B", 3);
+            
+
+            engine.Execute(script, scope);
+
+            var varsOut = scope.GetItems();
+            foreach (var v in varsOut)
+            {
+                GA.AddOutput(v.Key, v.Value);
+            }
+            // engine.Execute("print A;print B; sum=A+B", scope);
+            // int sum = scope.GetVariable("sum");
+            
+            Console.WriteLine("End RunPythonScript");
+        }
 
     }
 }

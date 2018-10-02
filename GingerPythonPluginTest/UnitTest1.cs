@@ -1,9 +1,9 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GingerPythonPlugin;
 using Amdocs.Ginger.Plugin.Core;
+using GingerPythonPlugin;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GingerPythonPluginTest
 {
@@ -64,6 +64,23 @@ namespace GingerPythonPluginTest
             Assert.IsNotNull(sr, "No Errors");
  
 
+        }
+
+
+        [TestMethod]
+        public void RunScript2()
+        {
+            // Arrange
+            GingerPythonService service = new GingerPythonService();
+            GingerAction GA = new GingerAction();
+
+            //Act
+            service.RunScript2(GA, "a=1;b=2;sum=a+b", new string[] { });
+
+            //Assert
+            Assert.AreEqual(1, GA.Output["a"]);
+            Assert.AreEqual(2, GA.Output["b"]);
+            Assert.AreEqual(3, GA.Output["sum"]);
         }
     }
 }

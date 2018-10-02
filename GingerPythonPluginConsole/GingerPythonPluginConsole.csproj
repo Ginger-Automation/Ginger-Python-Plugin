@@ -4,11 +4,27 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <ApplicationIcon />
-    <StartupObject />
+    <StartupObject>GingerPythonPluginConsole.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GingerPythonPlugin\GingerPythonPlugin.csproj" />
+    <PackageReference Include="Ginger.Plugin.Core" Version="2.6.6" />
+    <PackageReference Include="IronPython" Version="2.7.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GingerCoreNET">
+      <HintPath>..\..\..\..\..\..\Yaron\TFS\Ginger\Devs\GingerNextVer_Dev\GingerCoreNET\bin\Debug\netstandard2.0\GingerCoreNET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Ginger.PluginPackage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="GingerCoreNET.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

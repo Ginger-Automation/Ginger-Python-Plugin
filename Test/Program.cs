@@ -61,7 +61,8 @@ namespace Test
             scope.SetVariable("A", 4);
             scope.SetVariable("B", 3);
             engine.Execute("print A;print B; sum=A+B", scope);
-            Console.WriteLine(scope.GetVariable("sum"));
+            int sum = scope.GetVariable("sum");
+            // Console.WriteLine();
 
             Console.WriteLine("End RunPythonScript");
 
