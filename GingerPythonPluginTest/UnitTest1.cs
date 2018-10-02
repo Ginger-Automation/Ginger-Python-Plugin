@@ -82,5 +82,40 @@ namespace GingerPythonPluginTest
             Assert.AreEqual(2, GA.Output["b"]);
             Assert.AreEqual(3, GA.Output["sum"]);
         }
+
+        [TestMethod]
+        public void RunScript3()
+        {
+            // Arrange
+            GingerPythonService service = new GingerPythonService();
+            GingerAction GA = new GingerAction();
+
+            //Act
+            service.RunScript2(GA, "a='hello';b=' world';str=a+b");
+
+            //Assert
+            Assert.AreEqual("hello", GA.Output["a"]);
+            Assert.AreEqual(" world", GA.Output["b"]);
+            Assert.AreEqual("hello world", GA.Output["str"]);
+        }
+
+
+        [TestMethod]
+        public void RunScript4()
+        {
+            // Arrange
+            GingerPythonService service = new GingerPythonService();
+            GingerAction GA = new GingerAction();
+
+            //Act
+            service.RunScript2(GA, "a=3;b=4;c=max(a,b)");
+
+            //Assert
+            Assert.AreEqual(3, GA.Output["a"]);
+            Assert.AreEqual(4, GA.Output["b"]);
+            Assert.AreEqual(4, GA.Output["c"]);
+        }
+
+
     }
 }
