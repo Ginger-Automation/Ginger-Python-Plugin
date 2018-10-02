@@ -75,8 +75,8 @@ namespace GingerPythonPlugin
             return scope;
         }
 
-        [GingerAction("RunPythonScript", "Run Python script")]
-        public void RunScript2(IGingerAction GA, string script, string[] vars)  // replace with List
+        [GingerAction("RunScript2", "Run Script 2")]
+        public void RunScript2(IGingerAction GA, string script)  // replace with List , string[] vars
         {
             Console.WriteLine("start RunPythonScript");
             
@@ -92,6 +92,7 @@ namespace GingerPythonPlugin
             var varsOut = scope.GetItems();
             foreach (var v in varsOut)
             {
+                if (v.Key.StartsWith("__")) continue; // ignore internal vars
                 GA.AddOutput(v.Key, v.Value);
             }
             // engine.Execute("print A;print B; sum=A+B", scope);

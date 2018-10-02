@@ -75,7 +75,7 @@ namespace GingerPythonPluginTest
             GingerAction GA = new GingerAction();
 
             //Act
-            service.RunScript2(GA, "a=1;b=2;sum=a+b", new string[] { });
+            service.RunScript2(GA, "a=1;b=2;sum=a+b");
 
             //Assert
             Assert.AreEqual(1, GA.Output["a"]);
