@@ -10,15 +10,26 @@ using Microsoft.Scripting.Hosting;
 using Microsoft.Scripting;
 
 
+//using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.InteropServices;
+//using System.Diagnostics; // Process
+//using System.IO; // StreamWriter
+
+
 namespace Test
 {
     class Program
     {
         static void Main(string[] args)
         {
-            RunPython("c:\\Ronen\\development\\python\\GingerPythonPlugin\\sum.py");
-            RunPythonScript();
-            CallPythonFunc();
+            // RunPython("c:\\Ronen\\development\\python\\GingerPythonPlugin\\sum.py");
+            // RunPythonScript();
+            // CallPythonFunc();
+            RunNativePython2(args);
+
         }
 
 
@@ -95,13 +106,101 @@ namespace Test
 
 
         }
+ //====================================    Native Python  ===========================================   
+
+        static void RunNativePython1(string[] args)
+        {
+            String baseDir = "./";
+
+          
+
+            Process p = new Process(); // create process (i.e., the python program
+            p.StartInfo.FileName = "python.exe";
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.UseShellExecute = false; // make sure we can read the output from stdout
+            p.StartInfo.Arguments = baseDir + "hello.py "; // start the python program with two parameters
+            p.Start(); // start the process (the python program)
+            StreamReader s = p.StandardOutput;
+            String output = s.ReadToEnd();
+            string[] r = output.Split(new char[] { ' ' }); // get the parameter
+            Console.WriteLine(r[0]);
+            p.WaitForExit();
+
+            Console.ReadLine(); // wait for a key press
+        }
+
+        static void RunNativePython2(string[] args)
+        {
+          //  String baseDir = "c:/Ronen/development/python/GingerPythonPlugin/";
+            String baseDir = "./";
+
+            // the python program as a string. Note '@' which allow us to have a multiline string
+            String prg =
+@"import sys
+print 'Hello World'
+a=2
+b=3
+print  a
+print  b
+sum=a+b
+print sum";
+
+            
+//@"import sys
+//print 'hello world'";
+           
 
 
-       
+            StreamWriter sw = new StreamWriter(baseDir + "sum2arg.py");
+            sw.Write(prg); // write this program to a file
+            sw.Close();
 
+            int a = 5;
+            int b = 3;
 
+            Process p = createProcess();
+
+           
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.UseShellExecute = false; 
+            p.StartInfo.Arguments = baseDir + "sum2arg.py "; // + a + " " + b; 
+            p.Start(); 
+            StreamReader s = p.StandardOutput;
+            String output = s.ReadToEnd();
+
+          //  string[] result = output.Split(new char[] { ' ' }); 
+            
+            Console.WriteLine(output);
+            p.WaitForExit();
+
+          //  Console.ReadLine(); 
+        }
+
+        private static Process  createProcess()
+        {
+            Process p = new Process();
+
+            try
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    p.StartInfo.FileName = "python";
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    p.StartInfo.FileName = "python.exe";
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Failed to create process");
+                throw e;
+            }
+
+            return p;
+        }
 
     }
+
+
+
+
 }
 
 

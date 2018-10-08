@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GingerPythonPluginTest", "GingerPythonPluginTest\GingerPythonPluginTest.csproj", "{7A299719-9B13-43C8-A711-89DCA6AB31FB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GingerPythonPluginConsole", "GingerPythonPluginConsole\GingerPythonPluginConsole.csproj", "{709FC3B1-9E5A-4EB6-9FCE-C11A2D24E51F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GingerIronPythonPluginTest", "GingerPythonPluginTest\GingerIronPythonPluginTest.csproj", "{7A299719-9B13-43C8-A711-89DCA6AB31FB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{629A55AD-E86C-42A5-88CB-5DEDA5D39547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PythonLib", "PythonLib\PythonLib.csproj", "{D6C8673A-E4F8-43C5-B8BC-5F4AD6D5BB91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GingerIronPythonPluginConsole", "GingerPythonPluginConsole\GingerIronPythonPluginConsole.csproj", "{9194EC12-CEC5-4DD3-9E5D-C2A534F20B39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +21,18 @@ Global
 		{7A299719-9B13-43C8-A711-89DCA6AB31FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A299719-9B13-43C8-A711-89DCA6AB31FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A299719-9B13-43C8-A711-89DCA6AB31FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{709FC3B1-9E5A-4EB6-9FCE-C11A2D24E51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{709FC3B1-9E5A-4EB6-9FCE-C11A2D24E51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{709FC3B1-9E5A-4EB6-9FCE-C11A2D24E51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{709FC3B1-9E5A-4EB6-9FCE-C11A2D24E51F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{629A55AD-E86C-42A5-88CB-5DEDA5D39547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{629A55AD-E86C-42A5-88CB-5DEDA5D39547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{629A55AD-E86C-42A5-88CB-5DEDA5D39547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{629A55AD-E86C-42A5-88CB-5DEDA5D39547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C8673A-E4F8-43C5-B8BC-5F4AD6D5BB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C8673A-E4F8-43C5-B8BC-5F4AD6D5BB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C8673A-E4F8-43C5-B8BC-5F4AD6D5BB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C8673A-E4F8-43C5-B8BC-5F4AD6D5BB91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9194EC12-CEC5-4DD3-9E5D-C2A534F20B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9194EC12-CEC5-4DD3-9E5D-C2A534F20B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9194EC12-CEC5-4DD3-9E5D-C2A534F20B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9194EC12-CEC5-4DD3-9E5D-C2A534F20B39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
