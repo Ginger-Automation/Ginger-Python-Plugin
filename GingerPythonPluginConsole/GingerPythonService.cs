@@ -85,8 +85,8 @@ namespace GingerPythonPlugin
             return scope;
         }
 
-        [GingerAction("RunScript2", "Run Script 2")]
-        public void RunScript2(IGingerAction GA, string script)  // replace with List , string[] vars
+        [GingerAction("RunScript", "Run Script")]
+        public void RunScript(IGingerAction GA, string script)  // replace with List , string[] vars
         {
             Console.WriteLine("start RunPythonScript");
             
