@@ -119,34 +119,6 @@ namespace GingerPythonPluginTest
             Assert.AreEqual(4, GA.Output["c"]);
         }
 
-        [TestMethod]
-        public void RunScript4()
-        {
-            // Arrange
-            GingerPythonService service = new GingerPythonService();
-            GingerAction GA = new GingerAction();
-
-            //Act
-            service.RunScript(GA, "a=10;b=2;sub=a-b");
-
-            //Assert
-            Assert.AreEqual(10, GA.Output["a"]);
-            Assert.AreEqual(2, GA.Output["b"]);
-            Assert.AreEqual(8, GA.Output["sub"]);
-        }
-
-        [TestMethod]
-        public void RunScript5()
-        {
-            int a = 1;
-            int b = 2;
-            int c = 3;
-
-            //Assert
-            Assert.AreEqual(1, a);
-            Assert.AreEqual(2, b);
-            Assert.AreEqual(3, c);
-        }
 
     }
 }
