@@ -131,11 +131,9 @@ namespace Test
 
         static void RunNativePython2(string[] args)
         {
-          //  String baseDir = "c:/Ronen/development/python/GingerPythonPlugin/";
-            String baseDir = "./";
+             String baseDir = "./";
 
-            // the python program as a string. Note '@' which allow us to have a multiline string
-            String prg =
+             String prg =
 @"import sys
 print 'Hello World'
 a=2
@@ -155,8 +153,8 @@ print sum";
             sw.Write(prg); // write this program to a file
             sw.Close();
 
-            int a = 5;
-            int b = 3;
+          //  int a = 5;
+          //  int b = 3;
 
             Process p = createProcess();
 

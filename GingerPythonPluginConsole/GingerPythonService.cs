@@ -2,13 +2,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-
-
-using IronPython.Hosting;
-using IronPython.Runtime;
-using IronPython;
-using Microsoft.Scripting.Hosting;
-using Microsoft.Scripting;
 using System.Collections.Generic;
 
 namespace GingerPythonPlugin
@@ -17,93 +10,56 @@ namespace GingerPythonPlugin
     public class GingerPythonService : IGingerService, IStandAloneAction
     {
 
-        [GingerAction("RunPythonFile", "Run Python file" )]
-        public ScriptScope RunPython(IGingerAction GA, string PythonFile, List<String> LibList)
+        
+
+        [GingerAction("RunScript", "Run Script")]
+        public void RunScript(IGingerAction GA, string scriptName, string scriptContent,String[] args=null)  
         {
-            Console.WriteLine("start RunPython");
-            ScriptScope scope = null;
-            if (PythonFile != null)
-            {
-                var engine = Python.CreateEngine();
-                if (LibList != null && LibList.Count > 0)
-                {
-                    var searchPaths = engine.GetSearchPaths();
-                    foreach (String lib in LibList)
-                        searchPaths.Add(@lib);
-                    engine.SetSearchPaths(searchPaths);
-                }
-                scope = engine.CreateScope();
+            Console.WriteLine("start RunPythonScript");
 
-                Console.WriteLine("Run filename- " + PythonFile);
-                ScriptSource source = engine.CreateScriptSourceFromFile(PythonFile);
-                source.Execute(scope);
-
-                var varsOut = scope.GetItems();
-                foreach (var v in varsOut)
-                {
-                    if (v.Key.StartsWith("__")) continue; // ignore internal vars
-                    GA.AddOutput(v.Key, v.Value);
-                }
-
-
+            PythonProcess p = PythonProcess.Builder();
+            Scope scope = Scope.Builder(scriptName, scriptContent);
+            if (args != null){
+                for (int i = 0; i < args.Length; i++)
+                    scope.AddVariable(args[i]);
             }
-            else
-                Console.WriteLine("Please provide python file name");
 
-            Console.WriteLine("End RunPython");
-
-
-            return scope;
-        }
-
-
-        [GingerAction("RunPython", "Run Python script")]
-        public ScriptScope RunPythonScript(IGingerAction GA, string script, List<String> LibList)
-        {
-            Console.WriteLine("Start RunPythonScript");
-
-            var engine = Python.CreateEngine();
-            ScriptScope scope = engine.CreateScope();
-            if (LibList != null && LibList.Count > 0)
+            p.Execute(scope);
+            var OutputItems = p.getOutput();
+            foreach (var v in OutputItems)
             {
-                var searchPaths = engine.GetSearchPaths();
-                foreach (String lib in LibList)
-                    searchPaths.Add(@lib);
-                engine.SetSearchPaths(searchPaths);
+                GA.AddOutput(v.Key , v.Value);
+   //             Console.WriteLine(v.Key + v.Value);
             }
-            ScriptSource source = engine.CreateScriptSourceFromString(script);
-            source.Execute();
 
-            var varsOut = scope.GetItems();
-            foreach (var v in varsOut)
-            {
-                if (v.Key.StartsWith("__")) continue; // ignore internal vars
-                GA.AddOutput(v.Key, v.Value);
-            }
+
 
             Console.WriteLine("End RunPythonScript");
-            return scope;
         }
 
         [GingerAction("RunScript", "Run Script")]
-        public void RunScript(IGingerAction GA, string script)  // replace with List , string[] vars
+        public void RunScriptFile(IGingerAction GA, string scriptFileName, String[] args=null)
         {
             Console.WriteLine("start RunPythonScript");
-            
-            var engine = Python.CreateEngine();
-            ScriptScope scope = engine.CreateScope();
 
-            engine.Execute(script, scope);
-
-            var varsOut = scope.GetItems();
-            foreach (var v in varsOut)
+            PythonProcess p = PythonProcess.Builder();
+            Scope scope = Scope.Builder(scriptFileName);
+            if (args != null)
             {
-                if (v.Key.StartsWith("__")) continue; // ignore internal vars
-                GA.AddOutput(v.Key, v.Value);
+                for (int i = 0; i < args.Length; i++)
+                    scope.AddVariable(args[i]);
             }
-            // engine.Execute("print A;print B; sum=A+B", scope);
-            // int sum = scope.GetVariable("sum");
-            
+
+            p.Execute(scope);
+            var OutputItems = p.getOutput();
+            foreach (var v in OutputItems)
+            {
+                GA.AddOutput(v.Key, v.Value);
+                //             Console.WriteLine(v.Key + v.Value);
+            }
+
+
+
             Console.WriteLine("End RunPythonScript");
         }
 

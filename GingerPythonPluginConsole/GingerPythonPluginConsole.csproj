@@ -4,12 +4,11 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <ApplicationIcon />
-    <StartupObject>GingerPythonPluginConsole.Program</StartupObject>
+    <StartupObject>GingerIronPythonPluginConsole.GingerIronPythonPlugin</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Ginger.Plugin.Core" Version="2.6.6" />
-    <PackageReference Include="IronPython" Version="2.7.8.1" />
   </ItemGroup>
 
   <ItemGroup>

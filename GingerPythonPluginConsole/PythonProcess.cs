@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-namespace PythonLib
+namespace GingerPythonPlugin
 {
     class PythonProcess
     {

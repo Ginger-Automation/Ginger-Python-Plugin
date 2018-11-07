@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace PythonLib
+namespace GingerPythonPlugin
 {
    
 
@@ -29,7 +29,6 @@ namespace PythonLib
             Scope.CreateScope(sciptFileName);
             return Scope;
         }
-
 
 
         private Scope CreateScope(String sciptName, String content)
@@ -56,7 +55,7 @@ namespace PythonLib
             try
             {
                 scriptPath = sciptFileName;
-            }
+             }
             catch (Exception e)
             {
                 Console.WriteLine("Failed to create python scope");
@@ -64,7 +63,6 @@ namespace PythonLib
             }
             return this;
         }
-
 
         public Scope AddVariable(String Var)
         {

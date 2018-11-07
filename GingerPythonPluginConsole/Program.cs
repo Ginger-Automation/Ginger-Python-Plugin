@@ -3,9 +3,9 @@ using GingerPythonPlugin;
 using Amdocs.Ginger.Plugin.Core;
 using System.Collections.Generic;
 
-namespace GingerPythonPluginConsole
+namespace GingerIronPythonPluginConsole
 {
-    class Program
+    class GingerIronPythonPlugin
     {
         static void Main(string[] args)
         {

@@ -1,7 +1,7 @@
 ﻿{
   "Id": "GingerPython",
-  "Version": "1.0.0",
-  "ProjectUrl": "git\\Python...",
+  "Version": "v1.0",
+  "ProjectUrl": "https://github.com/Ginger-Automation/Ginger-Python-Plugin",
   "Description": "Execute Python script",
   "Summary": "Python...",
   "StartupDll": "GingerPythonPluginConsole.dll"
