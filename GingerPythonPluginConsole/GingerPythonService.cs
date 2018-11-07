@@ -13,12 +13,13 @@ namespace GingerPythonPlugin
         
 
         [GingerAction("RunScript", "Run Script")]
-        public void RunScript(IGingerAction GA, string scriptName, string scriptContent,String[] args=null)  
+        public void RunScript(IGingerAction GA, string scriptContent,String[] args=null)  
         {
             Console.WriteLine("start RunPythonScript");
 
             PythonProcess p = PythonProcess.Builder();
-            Scope scope = Scope.Builder(scriptName, scriptContent);
+            Scope scope = Scope.Builder().
+                SetContent(scriptContent);
             if (args != null){
                 for (int i = 0; i < args.Length; i++)
                     scope.AddVariable(args[i]);
@@ -43,7 +44,7 @@ namespace GingerPythonPlugin
             Console.WriteLine("start RunPythonScript");
 
             PythonProcess p = PythonProcess.Builder();
-            Scope scope = Scope.Builder(scriptFileName);
+            Scope scope = Scope.Builder().SetFile(scriptFileName);
             if (args != null)
             {
                 for (int i = 0; i < args.Length; i++)

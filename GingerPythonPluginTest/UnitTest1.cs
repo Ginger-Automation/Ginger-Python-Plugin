@@ -28,7 +28,7 @@ print  'b=' + str(b)
 sum=a+b
 print 'sum=' + str(sum)";
             //Act
-            service.RunScript(GA,"sum", script1);
+            service.RunScript(GA, script1);
            
 
             //Assert
@@ -52,7 +52,7 @@ print 'str=' + 'hello world'
 ";
 
             //Act
-            service.RunScript(GA,"concut", script2,null);
+            service.RunScript(GA, script2,null);
 
             //Assert
              Assert.AreEqual("hello world", GA.Output["str"]);
@@ -75,7 +75,7 @@ print 'b=' + str(b)
 print 'c=' + str(c)
 ";
             //Act
-            service.RunScript(GA,"max", script3,null);
+            service.RunScript(GA, script3,null);
 
             //Assert
             Assert.AreEqual("3", GA.Output["a"]);
@@ -100,7 +100,7 @@ print 'b=' + str(b)
 print 'c=' + str(c)
 ";
         //Act
-        service.RunScript(GA, "min", script4,null);
+        service.RunScript(GA, script4,null);
 
         //Assert
         Assert.AreEqual("3", GA.Output["a"]);
@@ -123,7 +123,7 @@ print  str(b)
 sum=a+b
 print 'sum=' + str(sum)";
             //Act
-            service.RunScript(GA, "sum1", script5,null);
+            service.RunScript(GA, script5,null);
 
 
             //Assert
@@ -152,7 +152,7 @@ print 'sum=' + str(sum)";
             String[] args = new string[2];
             args[0] = "4";
             args[1] = "7";
-            service.RunScript(GA, "sum", script6, args);
+            service.RunScript(GA, script6, args);
 
 
             //Assert

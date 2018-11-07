@@ -14,43 +14,33 @@ namespace GingerPythonPlugin
     {
         String[] args;
         String scriptPath;
+        String scriptContent;
         String baseDir = "./";
  
-         public static Scope Builder(String sciptName, String content)
+         public static Scope Builder()
          {
             Scope Scope = new Scope();
-            Scope.CreateScope(sciptName, content);
             return Scope;
          }
 
-        public static Scope Builder(String sciptFileName)
-        {
-            Scope Scope = new Scope();
-            Scope.CreateScope(sciptFileName);
-            return Scope;
-        }
-
-
-        private Scope CreateScope(String sciptName, String content)
+        private Scope CreateFile(String content)
         {
             try
             {
-                scriptPath = baseDir + sciptName + ".py";
+                scriptPath = System.IO.Path.GetTempFileName().Replace(".tmp", ".py");
                 StreamWriter sw = new StreamWriter(scriptPath);
                 sw.Write(content); 
                 sw.Close();
-
-
             }
             catch (Exception e)
             {
-                Console.WriteLine("Failed to create python scope");
+                Console.WriteLine("Failed to create python file");
                 throw e;
             }
             return this;
         }
 
-        private Scope CreateScope(String sciptFileName)
+        public Scope SetFile(String sciptFileName)
         {
             try
             {
@@ -63,6 +53,14 @@ namespace GingerPythonPlugin
             }
             return this;
         }
+
+        public Scope SetContent(String Content)
+        {
+            this.scriptContent = Content;
+            CreateFile(Content);
+            return this;
+        }
+
 
         public Scope AddVariable(String Var)
         {
