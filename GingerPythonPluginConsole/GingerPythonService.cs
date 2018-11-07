@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Collections.Generic;
+using GingerPythonPluginConsole;
 
 namespace GingerPythonPlugin
 {
@@ -13,7 +14,7 @@ namespace GingerPythonPlugin
         
 
         [GingerAction("RunScript", "Run Script")]
-        public void RunScript(IGingerAction GA, string scriptContent,String[] args=null)  
+        public void RunScript(IGingerAction GA, string scriptContent,List<Arg> args=null)  
         {
             Console.WriteLine("start RunPythonScript");
 
@@ -21,8 +22,8 @@ namespace GingerPythonPlugin
             Scope scope = Scope.Builder().
                 SetContent(scriptContent);
             if (args != null){
-                for (int i = 0; i < args.Length; i++)
-                    scope.AddVariable(args[i]);
+                foreach (Arg a in args)
+                    scope.AddVariable(a.value);
             }
 
             p.Execute(scope);
@@ -38,8 +39,8 @@ namespace GingerPythonPlugin
             Console.WriteLine("End RunPythonScript");
         }
 
-        [GingerAction("RunScript", "Run Script")]
-        public void RunScriptFile(IGingerAction GA, string scriptFileName, String[] args=null)
+        [GingerAction("RunScriptFile", "Run Script file")]
+        public void RunScriptFile(IGingerAction GA, string scriptFileName,  List<Arg> args=null)
         {
             Console.WriteLine("start RunPythonScript");
 
@@ -47,8 +48,8 @@ namespace GingerPythonPlugin
             Scope scope = Scope.Builder().SetFile(scriptFileName);
             if (args != null)
             {
-                for (int i = 0; i < args.Length; i++)
-                    scope.AddVariable(args[i]);
+                foreach (Arg a in args)
+                    scope.AddVariable(a.value);
             }
 
             p.Execute(scope);
