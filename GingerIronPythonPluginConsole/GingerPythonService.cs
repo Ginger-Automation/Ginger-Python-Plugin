@@ -1,18 +1,18 @@
-﻿//using Amdocs.Ginger.Plugin.Core;
-//using System;
-//using System.Diagnostics;
-//using System.IO;
+﻿using Amdocs.Ginger.Plugin.Core;
+using System;
+using System.Diagnostics;
+using System.IO;
 
 
-//using IronPython.Hosting;
-//using IronPython.Runtime;
-//using IronPython;
-//using Microsoft.Scripting.Hosting;
-//using Microsoft.Scripting;
-//using System.Collections.Generic;
+using IronPython.Hosting;
+using IronPython.Runtime;
+using IronPython;
+using Microsoft.Scripting.Hosting;
+using Microsoft.Scripting;
+using System.Collections.Generic;
 
-//namespace GingerIronPythonPlugin
-//{
+namespace GingerIronPythonPlugin
+{
 //    [GingerService("Python", "Run Python")]
 //    public class GingerPythonService : IGingerService, IStandAloneAction
 //    {
@@ -52,9 +52,8 @@
 
 //            Console.WriteLine("End RunPython");
 
-
-//            return scope;
-//        }
+  //         return scope;
+ //       }
 
 
 //        [GingerAction("RunPython", "Run Python script")]
@@ -108,4 +107,4 @@
 //        }
 
 //    }
-//}
+}

@@ -1,5 +1,6 @@
 using Amdocs.Ginger.Plugin.Core;
 using GingerPythonPlugin;
+using GingerPythonPluginConsole;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -149,9 +150,9 @@ print  'b=' + b
 sum = int(a) + int(b)
 print 'sum=' + str(sum)";
             //Act
-            String[] args = new string[2];
-            args[0] = "4";
-            args[1] = "7";
+            List<Arg> args = new List<Arg>();
+            args.Add(new Arg("4"));
+            args.Add(new Arg("7"));
             service.RunScript(GA, script6, args);
 
 
@@ -170,10 +171,10 @@ print 'sum=' + str(sum)";
 
 
             //Act
-            String[] args = new string[2];
-            args[0] = "5";
-            args[1] = "6";
- 
+            List<Arg> args = new List<Arg>();
+            args.Add(new Arg("5"));
+            args.Add(new Arg("6"));
+
             service.RunScriptFile(GA, "./sum-file.py", args);
 
 
