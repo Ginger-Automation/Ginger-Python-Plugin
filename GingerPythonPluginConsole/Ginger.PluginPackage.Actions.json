@@ -1,0 +1,42 @@
+[
+  {
+    "InputValues": [
+      {
+        "Param": "GA",
+        "ParamTypeName": "IGingerAction"
+      },
+      {
+        "Param": "scriptContent",
+        "ParamTypeName": "string"
+      },
+      {
+        "Param": "args",
+        "ParamTypeName": "List<GingerPythonPluginConsole.Arg>{Properties=value:String}"
+      }
+    ],
+    "ActionId": "RunScript",
+    "PluginId": "GingerPython",
+    "ServiceId": "Python",
+    "Description": "Run Script"
+  },
+  {
+    "InputValues": [
+      {
+        "Param": "GA",
+        "ParamTypeName": "IGingerAction"
+      },
+      {
+        "Param": "scriptFileName",
+        "ParamTypeName": "string"
+      },
+      {
+        "Param": "args",
+        "ParamTypeName": "List<GingerPythonPluginConsole.Arg>{Properties=value:String}"
+      }
+    ],
+    "ActionId": "RunScriptFile",
+    "PluginId": "GingerPython",
+    "ServiceId": "Python",
+    "Description": "Run Script file"
+  }
+]
