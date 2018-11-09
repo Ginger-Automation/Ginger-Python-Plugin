@@ -31,7 +31,7 @@ namespace GingerPythonPlugin
             foreach (var v in OutputItems)
             {
                 GA.AddOutput(v.Key , v.Value);
-   //             Console.WriteLine(v.Key + v.Value);
+                Console.WriteLine(v.Key + v.Value);
             }
 
 

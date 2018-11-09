@@ -11,22 +11,25 @@ namespace GingerIronPythonPluginConsole
         {
             Console.WriteLine("start GingerPythonPluginConsole");
 
-            GingerNodeStarter.StartNode(new GingerPythonService(), "Python Service 1");
-            Console.ReadKey();
+     /*       GingerPythonService service = new GingerPythonService();
+            GingerAction GA = new GingerAction();
 
-            //GingerPythonService service = new GingerPythonService();
-            //GingerAction GA = new GingerAction();
-            //String BasePath = "c:/Ronen/development/python/GingerPythonPlugin/";
-            //List<String> LibList = new List<String>();
-            //LibList.Add("c:/Python27/Lib/");
+            String script1 =
+            @"a=2
+b=3
+print  'a=' + str(a)
+print  'b=' + str(b)
+sum=a+b
+print 'sum=' + str(sum)";
+            //Act
+            service.RunScript(GA, script1);
+            */
 
 
-            //// Run python file
-            //service.RunPython(GA, BasePath + "hello.py", LibList);
-            //service.RunPython(GA, BasePath + "openFile.py", LibList);
-            //// Run python script
-            //service.RunPythonScript(GA, "print('hello from python script')", LibList);
+                    GingerNodeStarter.StartNode(new GingerPythonService(), "Python Service 1");
+                    Console.ReadKey();
 
+            
 
             Console.WriteLine("End GingerPythonPluginConsole");
 
