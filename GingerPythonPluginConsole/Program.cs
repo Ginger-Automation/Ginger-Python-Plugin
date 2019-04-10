@@ -26,8 +26,15 @@ print 'sum=' + str(sum)";
             */
 
 
-                    GingerNodeStarter.StartNode(new GingerPythonService(), "Python Service 1");
-                    Console.ReadKey();
+                 
+
+            using (GingerNodeStarter gingerNodeStarter = new GingerNodeStarter())
+            {
+                gingerNodeStarter.StartNode("Python Service 1", new GingerPythonService());
+                gingerNodeStarter.Listen();
+            }
+
+                Console.ReadKey();
 
             
 

@@ -8,7 +8,7 @@ using GingerPythonPluginConsole;
 namespace GingerPythonPlugin
 {
     [GingerService("Python", "Run Python")]
-    public class GingerPythonService : IGingerService, IStandAloneAction
+    public class GingerPythonService 
     {
 
         
