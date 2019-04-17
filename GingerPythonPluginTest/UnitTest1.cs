@@ -1,6 +1,7 @@
 using Amdocs.Ginger.Plugin.Core;
 using GingerPythonPlugin;
 using GingerPythonPluginConsole;
+using GingerTestHelper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -24,10 +25,10 @@ namespace GingerIronPythonPluginTest
 String script1 =
 @"a=2
 b=3
-print  'a=' + str(a)
-print  'b=' + str(b)
+print('a=' + str(a))
+print('b=' + str(b))
 sum=a+b
-print 'sum=' + str(sum)";
+print('sum=' + str(sum))";
             //Act
             service.RunScript(GA, script1);
            
@@ -49,7 +50,7 @@ String script2 =
 @"a = 'hello'
 b = ' world' 
 str = a + b
-print 'str=' + 'hello world'
+print('str=' + 'hello world')
 ";
 
             //Act
@@ -71,9 +72,9 @@ String script3 =
 @"a = 3
 b = 4
 c = max(a, b)
-print 'a=' + str(a)
-print 'b=' + str(b)
-print 'c=' + str(c)
+print('a=' + str(a))
+print('b=' + str(b))
+print('c=' + str(c))
 ";
             //Act
             service.RunScript(GA, script3,null);
@@ -96,9 +97,9 @@ String script4 =
 @"a = 3
 b = 4
 c = min(a, b)
-print 'a=' + str(a)
-print 'b=' + str(b)
-print 'c=' + str(c)
+print('a=' + str(a))
+print('b=' + str(b))
+print('c=' + str(c))
 ";
         //Act
         service.RunScript(GA, script4,null);
@@ -119,10 +120,10 @@ print 'c=' + str(c)
 String script5 =
 @"a=2
 b=3
-print  str(a)
-print  str(b)
+print(str(a))
+print(str(b))
 sum=a+b
-print 'sum=' + str(sum)";
+print('sum=' + str(sum))";
             //Act
             service.RunScript(GA, script5,null);
 
@@ -145,10 +146,10 @@ String script6 =
 @"import sys
 a = sys.argv[1]
 b = sys.argv[2]
-print  'a=' + a
-print  'b=' + b
+print('a=' + a)
+print('b=' + b)
 sum = int(a) + int(b)
-print 'sum=' + str(sum)";
+print('sum=' + str(sum))";
             //Act
             List<Arg> args = new List<Arg>();
             args.Add(new Arg("4"));
@@ -162,6 +163,7 @@ print 'sum=' + str(sum)";
             Assert.AreEqual("11", GA.Output["sum"]);
         }
 //======================  Script file  ==================
+        [Ignore]
         [TestMethod]
         public void RunScript7()
         {
@@ -175,7 +177,7 @@ print 'sum=' + str(sum)";
             args.Add(new Arg("5"));
             args.Add(new Arg("6"));
 
-            service.RunScriptFile(GA, "./sum-file.py", args);
+            service.RunScriptFile(GA, TestResources.GetTestResourcesFile("sum-file.py"), args);
 
 
             //Assert

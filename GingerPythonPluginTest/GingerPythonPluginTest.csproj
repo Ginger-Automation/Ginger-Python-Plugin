@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +17,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GingerPythonPluginConsole\GingerPythonPluginConsole.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestResources\sum-file.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

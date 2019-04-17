@@ -28,7 +28,7 @@ namespace GingerPythonPlugin
             try
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    p.StartInfo.FileName = "python";
+                    p.StartInfo.FileName = "/usr/bin/python3";
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                     p.StartInfo.FileName = "python.exe";
             }
