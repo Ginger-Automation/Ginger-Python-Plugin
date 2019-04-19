@@ -152,8 +152,8 @@ sum = int(a) + int(b)
 print('sum=' + str(sum))";
             //Act
             List<Arg> args = new List<Arg>();
-            args.Add(new Arg("4"));
-            args.Add(new Arg("7"));
+            args.Add(new Arg("Param 1", "4"));
+            args.Add(new Arg("Param 2", "7"));
             service.RunScript(GA, script6, args);
 
 
@@ -174,8 +174,8 @@ print('sum=' + str(sum))";
 
             //Act
             List<Arg> args = new List<Arg>();
-            args.Add(new Arg("5"));
-            args.Add(new Arg("6"));
+            args.Add(new Arg("Param 1", "5"));
+            args.Add(new Arg("Param 2", "6"));
 
             service.RunScriptFile(GA, TestResources.GetTestResourcesFile("sum-file.py"), args);
 

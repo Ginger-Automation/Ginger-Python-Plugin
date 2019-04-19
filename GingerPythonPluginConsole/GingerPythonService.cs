@@ -23,7 +23,7 @@ namespace GingerPythonPlugin
                 SetContent(scriptContent);
             if (args != null){
                 foreach (Arg a in args)
-                    scope.AddVariable(a.value);
+                    scope.AddVariable(a.Value);
             }
 
             p.Execute(scope);
@@ -49,7 +49,7 @@ namespace GingerPythonPlugin
             if (args != null)
             {
                 foreach (Arg a in args)
-                    scope.AddVariable(a.value);
+                    scope.AddVariable(a.Value);
             }
 
             p.Execute(scope);

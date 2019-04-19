@@ -6,10 +6,12 @@ namespace GingerPythonPluginConsole
 {
     public class Arg
     {
-        public string value { get; set; }
-        public Arg(String val)
+        public string Param { get; set; }
+        public string Value { get; set; }
+        public Arg(String param, String value)
         {
-            value = val;
+            Param = param;
+            Value = value;
         }
     }
 }
