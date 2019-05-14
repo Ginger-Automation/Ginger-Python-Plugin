@@ -162,8 +162,7 @@ print('sum=' + str(sum))";
             Assert.AreEqual("7", GA.Output["b"]);
             Assert.AreEqual("11", GA.Output["sum"]);
         }
-//======================  Script file  ==================
-        [Ignore]
+//======================  Script file  ==================        
         [TestMethod]
         public void RunScript7()
         {

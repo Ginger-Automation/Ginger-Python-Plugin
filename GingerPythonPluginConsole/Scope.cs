@@ -94,7 +94,7 @@ namespace GingerPythonPlugin
             String argStr = null;
             try
             {
-                argStr = scriptPath;
+                argStr = string.Format("\"{0}\"", scriptPath);
                 if (args != null && args.Length > 0)
                 {
                     for (int i = 0; i < args.Length; i++)
