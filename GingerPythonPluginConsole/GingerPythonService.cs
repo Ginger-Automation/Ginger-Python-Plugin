@@ -46,7 +46,7 @@ namespace GingerPythonPlugin
         public void RunScriptFile(IGingerAction GA, 
             [Browse(true)]
             [BrowseType(BrowseType =BrowseTypeAttribute.eBrowseType.File)]
-            [FileType(".py")]
+            [FileType("py")]
             string scriptFileName,  
             [Label("Python Parameters")]
             List<Arg> args)
