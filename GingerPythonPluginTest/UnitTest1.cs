@@ -30,7 +30,7 @@ print('b=' + str(b))
 sum=a+b
 print('sum=' + str(sum))";
             //Act
-            service.RunScript(GA, script1);
+            service.RunScript(GA, script1, null);
            
 
             //Assert

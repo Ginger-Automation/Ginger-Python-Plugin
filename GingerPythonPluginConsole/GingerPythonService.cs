@@ -11,11 +11,14 @@ namespace GingerPythonPlugin
     public class GingerPythonService 
     {
 
-        
+
 
         [GingerAction("RunScript", "Run Script")]
-        public void RunScript(IGingerAction GA, string scriptContent,List<Arg> args=null)  
-        {
+        public void RunScript(IGingerAction GA, 
+            string scriptContent, 
+            [Label("Python Parameters")]
+            List<Arg> args)  
+            {
             Console.WriteLine("start RunPythonScript");
 
             PythonProcess p = PythonProcess.Builder();
@@ -40,7 +43,13 @@ namespace GingerPythonPlugin
         }
 
         [GingerAction("RunScriptFile", "Run Script file")]
-        public void RunScriptFile(IGingerAction GA, string scriptFileName,  List<Arg> args=null)
+        public void RunScriptFile(IGingerAction GA, 
+            [Browse(true)]
+            [BrowseType(BrowseType =BrowseTypeAttribute.eBrowseType.File)]
+            [FileType(".py")]
+            string scriptFileName,  
+            [Label("Python Parameters")]
+            List<Arg> args)
         {
             Console.WriteLine("start RunPythonScript");
 
