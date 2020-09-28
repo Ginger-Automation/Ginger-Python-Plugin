@@ -9,17 +9,21 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+steps:
+
+
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
     feedsToUse: 'select'
-    displayName: 'Restore'
+  displayName: 'Restore'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    displayName: 'Build'
+  displayName: 'Build'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    displayName: 'Test'
+  displayName: 'Test'
