@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-2019'
+
+steps:
+
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+  displayName: 'Restore Packages'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+  displayName: 'Build Project'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+  displayName: 'Run Unit Tests'
